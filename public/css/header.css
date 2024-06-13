@@ -1,0 +1,101 @@
+.Header
+{    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 50px;
+ 
+    color: #3f7053;
+}
+
+.Header .logo
+{   height: auto;
+    align-items: center;
+    display: FLEX;
+    float: left;
+    font-family: 'Kodchasan';
+    font-size: 400%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3f7053;
+    margin-left: 10px;
+}
+
+.Header .hdrght
+{
+    float: right;
+    font-family: 'Inter';
+    color: #3f7053;
+    margin-top: 10px;
+}
+.Header .hdrght a
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 128%;
+    text-decoration: none;
+    color: #3f7053;
+}
+.Header .hdrght button:hover
+{
+    font-weight: bold;
+    cursor: pointer;
+}
+.Header .hdrght .icon
+{
+    display: none;
+}
+.Header .hdrght .closebtn
+{
+    display: none;
+}
+button{
+    color: #3f7053;
+}
+
+
+
+@media screen and (max-width: 768px) 
+{
+    .hdrght a {display: none;}
+    .Header .hdrght .icon 
+    {
+      float: right;
+      display: contents;
+    }
+    .Header .responsive 
+    {
+        background-color: black;
+        text-align: center;
+        opacity: 75%;
+        box-shadow: 0 2px 2px 0 rgba(167, 187, 255, 0.2), 0 6px 20px 0 rgba(152, 212, 255, 0.19);
+
+    }
+    .Header .responsive a
+    {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 128%;
+        text-decoration: none;
+        display: block;
+    }
+    .Header .responsive button
+    {
+        width: fit-content;
+    }
+    .Header .responsive .closebtn
+    {
+        display: block;
+        padding-left: 10px;
+        text-align: right;
+    }
+    .Header .responsive .closebtn:hover
+    {
+        font-weight: bolder;
+    }
+    .Header .responsive .icon 
+    {
+        display: none;
+    }
+}

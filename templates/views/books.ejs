@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Merriweather&family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+  
+  <style>
+    body{
+      background-color: rgb(239, 237, 236);
+    }
+    h1 {
+      font-family: 'Roboto', sans-serif; /* Set the desired font */
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+   
+    .books-container {
+      
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+    }
+
+    .book {
+      width: 40%;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 15px;
+      background-color: #558a63;
+    }
+
+    .book-image {
+      max-width: 200px;
+      margin-left: 150px;
+      height: auto;
+    }
+
+    .book-title {
+      font-size: 18px;
+    
+
+     
+    }
+
+    .book-author {
+      font-style: italic;
+     
+
+      margin-bottom: 5px;
+    }
+
+    .book-description {
+      margin-bottom: 10px;
+     
+    }
+
+    .book-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    .book-actions button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 300px;
+      height: 30px;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .search-button {
+      margin-left: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .no-books {
+      text-align: center;
+      font-size: 18px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header2') %>
+  <h1 class="heading"><span>Books for <%= branch %> Branch</span></h1>
+  <!-- <% console.log(user); %> -->
+  <div class="search-container">
+    <form class="search-form" action="/branch/<%= branch %>" method="get">
+      <input class="search-input" type="text" name="query" placeholder="Search for a book">
+      <button class="search-button" type="submit">Search</button>
+    </form>
+  </div>
+
+  <div class="books-container">
+    <% if (books.length > 0) { %>
+      <% books.forEach(function(book) { %>
+        <div class="book">
+          <img class="book-image" src="<%= book.image %>" alt="<%= book.title %>">
+          <h3 class="book-title"><%= book.title %></h3>
+          <p class="book-author">By <%= book.author %></p>
+          <p class="book-description"><%= book.description %></p>
+          <% if (book && book.quantity > 0) { %>
+            <div class="book-actions">
+              <form action="/branch/:branch/add-to-cart" method="post">
+                <input type="hidden" name="bookId" value="<%= book._id %>">
+                <button type="submit">Add to Cart</button>
+              </form>
+            </div>
+          <% } else { %>
+            <p>Not available</p>
+          <% } %>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p class="no-books">No books found</p>
+    <% } %>
+  </div>
+</body>
+</html>
+

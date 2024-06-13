@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Merriweather&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    
+    
+    <style>
+        body {
+          background-color: rgb(239, 237, 236);
+            
+           
+        }
+      .container{
+        margin-top: 160px;
+            align-items: center;
+            justify-content: center;
+        font-family: merryweather;
+        color: white;
+        
+      }
+      .card{
+        background-color: #89a78c;
+      }
+      
+      .btn-custom {
+        background-color: #008CBA;
+        color: white;
+}
+
+   </style>
+       
+  
+</head>
+<body>
+    <div class="container justify-content-center ">
+        <h1 class="text-center" style="color: #89a78c;">Register</h1>
+      
+        <div class="row justify-content-center">
+          <div class="col-sm-8">
+            <div class="card ">
+              <div class="card-body">
+      
+                <!-- Makes POST request to /login route -->
+                <form action="/register" method="POST">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="username">
+                  </div>
+                  <% if (locals.error) { %>
+                    <p><%= locals.error %></p>
+                  <% } %>
+                  
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  <button type="submit" class="btn btn-custom"  >Register</button>
+                </form>
+      
+              </div>
+            </div>
+          </div>
+</body>
+</html>

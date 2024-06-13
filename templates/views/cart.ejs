@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/public/css/cart.css">
+</head>
+<body>
+  <h1 class="heading"><span>Your Cart</span></h1>
+
+  <% if (user.cart.length > 0) { %>
+    <div class="cart-items">
+      <% user.cart.forEach(function(item) { %>
+        <div class="cart-item">
+          <div class="book-details">
+            <img class="book-image" src="<%= item.book.image %>" alt="<%= item.book.title %>">
+            <h3 class="book-title"><%= item.book.title %></h3>
+            <p class="book-author">By <%= item.book.author %></p>
+            <p class="book-description"><%= item.book.description %></p>
+          </div>
+          <div class="due-date">
+            <p>Due Date: <%= item.dueDate.toDateString() %></p>
+          </div>
+          <button class="remove-btn" data-book-id="<%= item.book._id %>">Remove from Cart</button>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-cart">Your cart is empty</p>
+  <% } %>
+  
+  <script src="/models/cart.js"></script>
+
+</body>
+</html>

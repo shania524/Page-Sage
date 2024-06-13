@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: antiquewhite;
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+.heading {
+  text-align: center;
+  font-family: Merriweather;
+  font-weight: bold;
+}
+
+.heading span {
+  display: inline-block;
+  /* border: 2px solid black; */
+  padding: 5px 10px;
+  /* background-color: #b0bcb1; */
+  box-shadow: inset black;
+}
+
+.branches {
+  margin-top: 100px;
+}
+
+.branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70px;
+  font-size: xx-large;
+  border: none;
+}
+
+.branch-image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+  border-radius: 30%;
+  overflow: hidden;
+  border: 4px solid #0b0a0a;
+  box-sizing: border-box;
+}
+
+button.branch-button {
+  font-size: small;
+  font-family: Merriweather;
+  font-weight: 80;
+  font-size: 20px;
+  border: 3px solid rgb(10, 10, 10);
+  background-color: #3e804e;
+  color: rgb(239, 237, 236);
+  text-decoration: none;
+  padding:  5px 5px 5px 5px; /* Add padding to give some spacing around the button text */
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+button.branch-button:hover {
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .branches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .branch {
+    width: calc(50% - 20px);
+  }
+}
