@@ -40,7 +40,7 @@ app.use(session({
   secret: "your-secret-key", 
   resave: false,
   saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl:process.env.DB_URI,  })
+ // store: MongoStore.create({ mongoUrl:process.env.DB_URI,  })
 }));
 
 mongoose.set('strictQuery', true);
@@ -50,9 +50,18 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'templates', 'views'));
 
 // mongoose.connect("mongodb://localhost:27017/userDB", { useNewUrlParser: true });
-mongoose.connect(process.env.DB_URI, { useNewUrlParser: true })
+//mongoose.connect(process.env.DB_URI, { useNewUrlParser: true })
 
-
+mongoose.connect("mongodb://127.0.0.1:27017/userDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log("Connection successful");
+  })
+  .catch((e) => {
+    console.log("Error connecting to MongoDB:", e);
+  });
 
 app.use(express.static(__dirname));
 
