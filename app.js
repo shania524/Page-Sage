@@ -7,7 +7,28 @@ const mongoose = require("mongoose");
 const path = require('path');
 const Book = require("./models/book");
 const bcrypt = require("bcrypt");
+const { MongoClient } = require("mongodb");
+ 
+// Replace the following with your Atlas connection string                                                                                                                                        
+// const url = "mongodb+srv://<username>:<shania123>@<clusterName\>.mongodb.net/?retryWrites=true&w=majority";
 
+// // Connect to your Atlas cluster
+// const client = new MongoClient(url);
+
+// async function run() {
+//     try {
+//         await client.connect();
+//         console.log("Successfully connected to Atlas");
+
+//     } catch (err) {
+//         console.log(err.stack);
+//     }
+//     finally {
+//         await client.close();
+//     }
+// }
+
+// run().catch(console.dir);
 const ObjectId = mongoose.Types.ObjectId;
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
