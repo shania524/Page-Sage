@@ -13,6 +13,7 @@ const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const app = express();
 
+console.log('MongoDB URI:', process.env.DB_URI);
 
 app.use(session({
   secret: "your-secret-key", 
