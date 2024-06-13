@@ -10,13 +10,15 @@ const bcrypt = require("bcrypt");
 
 const ObjectId = mongoose.Types.ObjectId;
 const session = require("express-session");
-
+const MongoStore = require('connect-mongo');
 const app = express();
+
 
 app.use(session({
   secret: "your-secret-key", 
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl:process.env.DB_URI,  })
 }));
 
 mongoose.set('strictQuery', true);
