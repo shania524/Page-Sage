@@ -7,10 +7,12 @@ const mongoose = require("mongoose");
 const path = require('path');
 const Book = require("./models/book");
 const bcrypt = require("bcrypt");
-const session = require("express-session");
-const MongoStore = require('connect-mongo');
 
 const app = express();
+const session = require("express-session");
+
+
+
 
 // Ensure environment variable is loaded
 console.log('MongoDB URI:', process.env.DB_URI);
@@ -19,10 +21,7 @@ app.use(session({
   secret: "your-secret-key",
   resave: false,
   saveUninitialized: true,
-  store: MongoStore.create({
-    mongoUrl: process.env.DB_URI,
-    collectionName: 'sessions'
-  })
+  
 }));
 
 mongoose.set('strictQuery', true);
@@ -30,6 +29,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'templates', 'views'));
 
 // Connect to MongoDB Atlas
+
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB Atlas");
