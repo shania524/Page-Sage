@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 
 const app = express();
 const session = require("express-session");
-
+const MongoStore = require('connect-mongo');
 
 
 
@@ -21,15 +21,14 @@ app.use(session({
   secret: "your-secret-key",
   resave: false,
   saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: process.env.DB_URI,
+    collectionName: 'sessions'
+  })
   
 }));
 
 mongoose.set('strictQuery', true);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'templates', 'views'));
-
-// Connect to MongoDB Atlas
-
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB Atlas");
@@ -37,6 +36,12 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
   .catch((err) => {
     console.error("Error connecting to MongoDB:", err);
   });
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'templates', 'views'));
+
+// Connect to MongoDB Atlas
+
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
